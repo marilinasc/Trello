@@ -34,7 +34,7 @@ Variables de ambiente:
     Test: Validar codigo de estado 200: se ejecuta al final de cada solicitud que se encuentra dentro de esta carpeta. 
 
     - Request:
-      - POST | Crear nueva lista:
+      - **POST | Crear nueva lista:**
 
         Query Params:
         - Key: name. Valor: se ingresa el valor mediante la variable de coleccion {{nameLista}}
@@ -44,7 +44,7 @@ Variables de ambiente:
         - Validar esquema JSON
         - Crear variable de coleccion {{idLista}}
         
-      - POST | Crear nueva tarjeta
+      - **POST | Crear nueva tarjeta**
 
         Query Params:
         - Key: idList. Valor: se obtiene de la variable de coleccion {{idlista}} creado por el request anterior
@@ -55,7 +55,7 @@ Variables de ambiente:
         - Validar tarjeta creada con el nombre correcto
         - Crear la variable {{idTarjeta}}
           
-      - POST | Crear nuevo Checklist
+      - **POST | Crear nuevo Checklist**
 
         Query Params:
         - Key: name. Valor: se ingresa el valor mediante la variable de coleccion {{nameChecklist}}
@@ -70,7 +70,7 @@ Variables de ambiente:
         - Crear la variable {{idChecklist}}
 
     
-      - POST | Crear nuevo Checkitem
+      - **POST | Crear nuevo Checkitem**
         
         Query Params:
         - Key: name. Valor: se puede ingresar el valor de dos formas posibles:
@@ -86,7 +86,7 @@ Variables de ambiente:
         - Validar checkitem creado en el checklist correcto
         - Crear la variable {{idCheckitem}}
       
-      - PUT | Modificar state en CheckItem
+      - **PUT | Modificar state en CheckItem**
         
         Query Params:
         - Key: state. Valor: complete
@@ -95,7 +95,7 @@ Variables de ambiente:
         -   Key: id. Valor: se obtiene de la variable de coleccion {{idTarjeta}}
         -   Key: idCheckItem. Valor: se obtiene de la variable de coleccion {{idCheckitem}} creado por el request anterior.
        
-      - GET | Validar state de CheckItem
+      - **GET | Validar state de CheckItem**
         
          Path Variables:
         -   Key: id. Valor: se obtiene de la variable de coleccion {{idChecklist}}
@@ -103,15 +103,20 @@ Variables de ambiente:
         Test:
         - Validar checkitem con state "complete"
           
-      - GET | Visualizar Checkitems
+      - **GET | Visualizar Checkitems**
         
         Path Variables:
         -   Key: id. Valor: se obtiene de la variable de coleccion {{idChecklist}}
           
         Test:
-        - Visualizar contenido en postman
+        - Representar visualmente las respuestas de las solicitudes
           
+          <img src="/Visualize.PNG"/> 
         
-      - DEL | Eliminar tarjeta
-      - PUT | Archivar lista
-      - GET | Validar lista archivada
+      - **DEL | Eliminar tarjeta**
+
+        Path Variables:
+        -   Key: id. Valor: se obtiene de la variable de coleccion {{idTarjeta}}
+    
+      - **PUT | Archivar lista**
+      - **GET | Validar lista archivada**
