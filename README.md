@@ -153,6 +153,7 @@ Variables de ambiente:
         Test:
         - Validar tarjeta creada con el nombre correcto
         - Validar tarjeta creada en la lista correcta
-        
-     
-          
+
+### 📊 Reportes: 
+Se realiza la ejecucion y prueba de la coleccion desde la linea de comando con Newman.
+Reporte HTML: <a href=""> Newman Run Dashboard </a>
