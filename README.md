@@ -10,6 +10,8 @@ En este proyecto se crea contenido en la herramienta Trello utilizando sus API R
 
 ### ⚙ Herramientas utilizadas:
 * Postman
+* Newman
+* Jenkins
 
 ### ✅ Precondición
 
