@@ -29,7 +29,7 @@ Variables de ambiente:
 
 ### 📁 Contenido:
 - Coleccion: Tablero
-  - Carpeta: Workflow
+  - _Carpeta: Workflow_
 
     Test: Validar codigo de estado 200: se ejecuta al final de cada solicitud que se encuentra dentro de esta carpeta. 
 
@@ -119,4 +119,34 @@ Variables de ambiente:
         -   Key: id. Valor: se obtiene de la variable de coleccion {{idTarjeta}}
     
       - **PUT | Archivar lista**
-      - **GET | Validar lista archivada**
+     
+        Path Variables:
+        -   Key: id. Valor: se obtiene de la variable de coleccion {{idLista}}
+
+       - **GET | Validar lista archivada**
+         
+         Path Variables:
+        -   Key: id. Valor: se obtiene de la variable de coleccion {{idLista}}
+
+        Test:
+        - Validar lista archivada
+        - Visualizar resultado final del test, si pasa la ultima prueba en la pestaña Visualize se muestra el mensaje "Passing!" de lo contrario se muestra el mensaje "Please try again!"
+          
+  - _Carpeta: Mock_
+    
+    - Request:
+      - **POST | Crear lista USUARIOS**
+
+        Utiliza un servidor simulado llamado "Mock lista usuarios". En este request, se realiza la simulacion de la creacion de una lista con el nombre "USUARIOS", utilizando la respuesta guardada como ejemplo en el Request "crear nueva lista".
+                
+        Test:
+        - Validar lista creada con el nombre correcto
+        - Validar el esquema JSON
+
+      - **POST | Crear tarjeta Kirk Olson**
+
+        Utiliza un servidor simulado llamado "Mock lista usuarios". En este request, se realiza la simulacion de la creacion de una tarjeta con el nombre "Kirk Olson", utilizando la respuesta guardada como ejemplo en el Request "crear nueva tarjeta".
+                
+        
+     
+          
