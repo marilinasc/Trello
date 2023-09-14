@@ -146,7 +146,10 @@ Variables de ambiente:
       - **POST | Crear tarjeta Kirk Olson**
 
         Utiliza un servidor simulado llamado "Mock lista usuarios". En este request, se realiza la simulacion de la creacion de una tarjeta con el nombre "Kirk Olson", utilizando la respuesta guardada como ejemplo en el Request "crear nueva tarjeta".
-                
+
+        Test:
+        - Validar tarjeta creada con el nombre correcto
+        - Validar tarjeta creada en la lista correcta
         
      
           
