@@ -27,8 +27,9 @@ Variables de ambiente:
 * baseURL
 * idBoard
 
-### 📁 Contenido:
-- Coleccion: Tablero
+### 📁 Contenido: 
+
+- Coleccion: Tablero <a href="https://github.com/marilinasc/Trello/blob/main/Tablero.postman_collection.json"> (Archivo JSON) </a>
   - _Carpeta: Workflow_
 
     Test: Validar codigo de estado 200: se ejecuta al final de cada solicitud que se encuentra dentro de esta carpeta. 
