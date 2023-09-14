@@ -1,0 +1,1524 @@
+{
+	"info": {
+		"_postman_id": "0bfc9118-0e4d-4881-8c65-200f1cabf17f",
+		"name": "Tablero",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23659766"
+	},
+	"item": [
+		{
+			"name": "Mock",
+			"item": [
+				{
+					"name": "Crear lista Usuarios",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Validar lista creada con el nombre correcto\r",
+									"pm.test(\"Lista creada con el nombre USUARIOS\"),()=> {pm.expect(pm.response.json().name).to.be.eql(\"USUARIOS\")}\r",
+									"\r",
+									"// Validar el esquema JSON\r",
+									"const schema = \r",
+									"{\"type\": \"object\",\r",
+									"  \"properties\": {\r",
+									"    \"id\": {\r",
+									"      \"type\": \"string\"\r",
+									"    },\r",
+									"    \"name\": {\r",
+									"      \"type\": \"string\"\r",
+									"    },\r",
+									"    \"closed\": {\r",
+									"      \"type\": \"boolean\"\r",
+									"    },\r",
+									"    \"idBoard\": {\r",
+									"      \"type\": \"string\"\r",
+									"    },\r",
+									"    \"pos\": {\r",
+									"      \"type\": \"integer\"\r",
+									"    },\r",
+									"    \"status\": {\r",
+									"      \"type\": \"null\"\r",
+									"    }\r",
+									"  },\r",
+									"  \"required\": [\r",
+									"    \"id\"\r",
+									"  ]\r",
+									"}\r",
+									"\r",
+									"pm.test('Schema is valid', () => {\r",
+									"    const response = pm.response.json();\r",
+									"    pm.expect(response).to.have.jsonSchema(schema);\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "https://d0734b6c-c7cb-499c-b58f-b15564569662.mock.pstmn.io/lists",
+							"protocol": "https",
+							"host": [
+								"d0734b6c-c7cb-499c-b58f-b15564569662",
+								"mock",
+								"pstmn",
+								"io"
+							],
+							"path": [
+								"lists"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear tarjeta Kirk Olson",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.collectionVariables.set(\"nameTarjeta\",pm.variables.replaceIn('{{$randomFullName}}'))"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//Validar tarjeta creada con el nombre correcto\r",
+									"pm.test(\"Tarjeta creada con el nombre Kirk Olson\"),()=> {\r",
+									"    pm.expect(pm.response.json().name).to.be.eql(\"Kirk Olson\")\r",
+									"}\r",
+									"\r",
+									"//Validar tarjeta creada en la lista correcta\r",
+									"pm.test(\"Tarjeta creada en la lista USUARIOS\"),()=> {\r",
+									"    pm.expect(pm.response.json().idList).to.be.eql(\"64ebbb58b70c0ee5727ffb9d\")\r",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "https://d0734b6c-c7cb-499c-b58f-b15564569662.mock.pstmn.io/cards",
+							"protocol": "https",
+							"host": [
+								"d0734b6c-c7cb-499c-b58f-b15564569662",
+								"mock",
+								"pstmn",
+								"io"
+							],
+							"path": [
+								"cards"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Tarjeta Kirk Olson",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "https://api.trello.com/1/cards?key=•••••••&token=•••••••&idList=&name=",
+									"protocol": "https",
+									"host": [
+										"api",
+										"trello",
+										"com"
+									],
+									"path": [
+										"1",
+										"cards"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "•••••••"
+										},
+										{
+											"key": "token",
+											"value": "•••••••"
+										},
+										{
+											"key": "idList",
+											"value": ""
+										},
+										{
+											"key": "name",
+											"value": ""
+										},
+										{
+											"key": "",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 27 Aug 2023 21:50:07 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1123"
+								},
+								{
+									"key": "X-Dns-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "Expect-Ct",
+									"value": "max-age=0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "Surrogate-Control",
+									"value": "no-store"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "max-age=0, must-revalidate, no-cache, no-store"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "Thu, 01 Jan 1970 00:00:00"
+								},
+								{
+									"key": "X-Trello-Version",
+									"value": "1.229814.0"
+								},
+								{
+									"key": "X-Trello-Environment",
+									"value": "Production"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, PUT, POST, DELETE"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Authorization, Accept, Content-Type"
+								},
+								{
+									"key": "Access-Control-Expose-Headers",
+									"value": "x-rate-limit-api-key-interval-ms, x-rate-limit-api-key-max, x-rate-limit-api-key-remaining, x-rate-limit-api-token-interval-ms, x-rate-limit-api-token-max, x-rate-limit-api-token-remaining"
+								},
+								{
+									"key": "X-Rate-Limit-Api-Token-Interval-Ms",
+									"value": "10000"
+								},
+								{
+									"key": "X-Rate-Limit-Api-Token-Max",
+									"value": "100"
+								},
+								{
+									"key": "X-Rate-Limit-Api-Token-Remaining",
+									"value": "99"
+								},
+								{
+									"key": "X-Rate-Limit-Db-Query-Time-Interval-Ms",
+									"value": "600000"
+								},
+								{
+									"key": "X-Rate-Limit-Db-Query-Time-Max",
+									"value": "7200000"
+								},
+								{
+									"key": "X-Rate-Limit-Db-Query-Time-Remaining",
+									"value": "7199990"
+								},
+								{
+									"key": "X-Rate-Limit-Api-Key-Interval-Ms",
+									"value": "10000"
+								},
+								{
+									"key": "X-Rate-Limit-Api-Key-Max",
+									"value": "300"
+								},
+								{
+									"key": "X-Rate-Limit-Api-Key-Remaining",
+									"value": "299"
+								},
+								{
+									"key": "X-Rate-Limit-Member-Interval-Ms",
+									"value": "10000"
+								},
+								{
+									"key": "X-Rate-Limit-Member-Max",
+									"value": "375"
+								},
+								{
+									"key": "X-Rate-Limit-Member-Remaining",
+									"value": "374"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "preAuthProps=s%3A5d782f54e7fbba088cc6ac03%3AisEnterpriseAdmin%3Dfalse.TdGPIj60ccTTmB2NHwarV29dxYOP87Did7lG%2FTQ%2FN%2BM; Path=/; HttpOnly"
+								},
+								{
+									"key": "X-Server-Time",
+									"value": "1693173007836"
+								},
+								{
+									"key": "Server",
+									"value": "AtlassianEdge"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Xss-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Atl-Traceid",
+									"value": "90b23dcf8332093c"
+								},
+								{
+									"key": "Report-To",
+									"value": "{\"endpoints\": [{\"url\": \"https://dz8aopenkvv6s.cloudfront.net\"}], \"group\": \"endpoint-1\", \"include_subdomains\": true, \"max_age\": 600}"
+								},
+								{
+									"key": "Nel",
+									"value": "{\"failure_fraction\": 0.001, \"include_subdomains\": true, \"max_age\": 600, \"report_to\": \"endpoint-1\"}"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000; preload"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"64ebc50fcdeead45d54e95d3\",\n    \"badges\": {\n        \"attachmentsByType\": {\n            \"trello\": {\n                \"board\": 0,\n                \"card\": 0\n            }\n        },\n        \"location\": false,\n        \"votes\": 0,\n        \"viewingMemberVoted\": false,\n        \"subscribed\": false,\n        \"fogbugz\": \"\",\n        \"checkItems\": 0,\n        \"checkItemsChecked\": 0,\n        \"checkItemsEarliestDue\": null,\n        \"comments\": 0,\n        \"attachments\": 0,\n        \"description\": false,\n        \"due\": null,\n        \"dueComplete\": false,\n        \"start\": null\n    },\n    \"checkItemStates\": [],\n    \"closed\": false,\n    \"dueComplete\": false,\n    \"dateLastActivity\": \"2023-08-27T21:50:07.756Z\",\n    \"desc\": \"\",\n    \"descData\": {\n        \"emoji\": {}\n    },\n    \"due\": null,\n    \"dueReminder\": null,\n    \"email\": null,\n    \"idBoard\": \"64495f377e4960350195743f\",\n    \"idChecklists\": [],\n    \"idList\": \"64ebbb58b70c0ee5727ffb9d\",\n    \"idMembers\": [],\n    \"idMembersVoted\": [],\n    \"idShort\": 30,\n    \"idAttachmentCover\": null,\n    \"labels\": [],\n    \"idLabels\": [],\n    \"manualCoverAttachment\": false,\n    \"name\": \"Kirk Olson\",\n    \"pos\": 32768,\n    \"shortLink\": \"DlvgtaC5\",\n    \"shortUrl\": \"https://trello.com/c/DlvgtaC5\",\n    \"start\": null,\n    \"subscribed\": false,\n    \"url\": \"https://trello.com/c/DlvgtaC5/30-kirk-olson\",\n    \"cover\": {\n        \"idAttachment\": null,\n        \"color\": null,\n        \"idUploadedBackground\": null,\n        \"size\": \"normal\",\n        \"brightness\": \"dark\",\n        \"idPlugin\": null\n    },\n    \"isTemplate\": false,\n    \"cardRole\": null,\n    \"attachments\": [],\n    \"stickers\": [],\n    \"limits\": {}\n}"
+						}
+					]
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"//Validar status code 200",
+							"pm.test(\"Resultado 200\",()=> {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Workflow",
+			"item": [
+				{
+					"name": "Crear nueva lista",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Validar lista creada con el nombre correcto\r",
+									"pm.test(`Lista creada con el nombre = ${pm.collectionVariables.get(\"nameLista\")}`,()=> {pm.expect(pm.response.json().name).to.be.eql(pm.collectionVariables.get(\"nameLista\"))\r",
+									"})\r",
+									"\r",
+									"//Crear o actualizar variable idLista\r",
+									"pm.collectionVariables.set(\"idLista\",pm.response.json().id)\r",
+									"\r",
+									"// Validar esquema JSON\r",
+									"const schema = \r",
+									"{\"type\": \"object\",\r",
+									"  \"properties\": {\r",
+									"    \"id\": {\r",
+									"      \"type\": \"string\"\r",
+									"    },\r",
+									"    \"name\": {\r",
+									"      \"type\": \"string\"\r",
+									"    },\r",
+									"    \"closed\": {\r",
+									"      \"type\": \"boolean\"\r",
+									"    },\r",
+									"    \"idBoard\": {\r",
+									"      \"type\": \"string\"\r",
+									"    },\r",
+									"    \"pos\": {\r",
+									"      \"type\": \"integer\"\r",
+									"    },\r",
+									"    \"status\": {\r",
+									"      \"type\": \"null\"\r",
+									"    }\r",
+									"  },\r",
+									"  \"required\": [\r",
+									"    \"id\"\r",
+									"  ]\r",
+									"}\r",
+									"\r",
+									"pm.test('Schema is valid', () => {\r",
+									"    const response = pm.response.json();\r",
+									"    pm.expect(response).to.have.jsonSchema(schema);\r",
+									"})\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/lists?name={{nameLista}}&idBoard={{idBoard}}&key={{Key}}&token={{token}}&pos=bottom",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"lists"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "{{nameLista}}"
+								},
+								{
+									"key": "idBoard",
+									"value": "{{idBoard}}"
+								},
+								{
+									"key": "key",
+									"value": "{{Key}}"
+								},
+								{
+									"key": "token",
+									"value": "{{token}}"
+								},
+								{
+									"key": "pos",
+									"value": "bottom"
+								}
+							]
+						},
+						"description": "Test\n\n``` javascript\n// Validar lista creada con el nombre correcto\npm.test(`Lista creada con el nombre = ${pm.collectionVariables.get(\"nameLista\")}`,()=> {pm.expect(pm.response.json().name).to.be.eql(pm.collectionVariables.get(\"nameLista\"))\n})\n//Crear o actualizar variable idLista\npm.collectionVariables.set(\"idLista\",pm.response.json().id)\n// Validar esquema JSON\nconst schema = \n{\"type\": \"object\",\n  \"properties\": {\n    \"id\": {\n      \"type\": \"string\"\n    },\n    \"name\": {\n      \"type\": \"string\"\n    },\n    \"closed\": {\n      \"type\": \"boolean\"\n    },\n    \"idBoard\": {\n      \"type\": \"string\"\n    },\n    \"pos\": {\n      \"type\": \"integer\"\n    },\n    \"status\": {\n      \"type\": \"null\"\n    }\n  },\n  \"required\": [\n    \"id\"\n  ]\n}\npm.test('Schema is valid', () => {\n    const response = pm.response.json();\n    pm.expect(response).to.have.jsonSchema(schema);\n})\n\n ```"
+					},
+					"response": [
+						{
+							"name": "Lista Usuarios",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "https://api.trello.com/1/lists?name=&idBoard=•••••••&key=•••••••&token=•••••••&pos=bottom",
+									"protocol": "https",
+									"host": [
+										"api",
+										"trello",
+										"com"
+									],
+									"path": [
+										"1",
+										"lists"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": ""
+										},
+										{
+											"key": "idBoard",
+											"value": "•••••••"
+										},
+										{
+											"key": "key",
+											"value": "•••••••"
+										},
+										{
+											"key": "token",
+											"value": "•••••••"
+										},
+										{
+											"key": "pos",
+											"value": "bottom"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 27 Aug 2023 21:08:40 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "141"
+								},
+								{
+									"key": "X-Dns-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "Expect-Ct",
+									"value": "max-age=0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "Surrogate-Control",
+									"value": "no-store"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "max-age=0, must-revalidate, no-cache, no-store"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "Thu, 01 Jan 1970 00:00:00"
+								},
+								{
+									"key": "X-Trello-Version",
+									"value": "1.229814.0"
+								},
+								{
+									"key": "X-Trello-Environment",
+									"value": "Production"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, PUT, POST, DELETE"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Authorization, Accept, Content-Type"
+								},
+								{
+									"key": "Access-Control-Expose-Headers",
+									"value": "x-rate-limit-api-key-interval-ms, x-rate-limit-api-key-max, x-rate-limit-api-key-remaining, x-rate-limit-api-token-interval-ms, x-rate-limit-api-token-max, x-rate-limit-api-token-remaining"
+								},
+								{
+									"key": "X-Rate-Limit-Db-Query-Time-Interval-Ms",
+									"value": "600000"
+								},
+								{
+									"key": "X-Rate-Limit-Db-Query-Time-Max",
+									"value": "7200000"
+								},
+								{
+									"key": "X-Rate-Limit-Db-Query-Time-Remaining",
+									"value": "7199990"
+								},
+								{
+									"key": "X-Rate-Limit-Api-Token-Interval-Ms",
+									"value": "10000"
+								},
+								{
+									"key": "X-Rate-Limit-Api-Token-Max",
+									"value": "100"
+								},
+								{
+									"key": "X-Rate-Limit-Api-Token-Remaining",
+									"value": "99"
+								},
+								{
+									"key": "X-Rate-Limit-Api-Key-Interval-Ms",
+									"value": "10000"
+								},
+								{
+									"key": "X-Rate-Limit-Api-Key-Max",
+									"value": "300"
+								},
+								{
+									"key": "X-Rate-Limit-Api-Key-Remaining",
+									"value": "299"
+								},
+								{
+									"key": "X-Rate-Limit-Member-Interval-Ms",
+									"value": "10000"
+								},
+								{
+									"key": "X-Rate-Limit-Member-Max",
+									"value": "375"
+								},
+								{
+									"key": "X-Rate-Limit-Member-Remaining",
+									"value": "374"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "preAuthProps=s%3A5d782f54e7fbba088cc6ac03%3AisEnterpriseAdmin%3Dfalse.TdGPIj60ccTTmB2NHwarV29dxYOP87Did7lG%2FTQ%2FN%2BM; Path=/; HttpOnly"
+								},
+								{
+									"key": "X-Server-Time",
+									"value": "1693170520293"
+								},
+								{
+									"key": "Server",
+									"value": "AtlassianEdge"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Xss-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Atl-Traceid",
+									"value": "b933c1214813da4a"
+								},
+								{
+									"key": "Report-To",
+									"value": "{\"endpoints\": [{\"url\": \"https://dz8aopenkvv6s.cloudfront.net\"}], \"group\": \"endpoint-1\", \"include_subdomains\": true, \"max_age\": 600}"
+								},
+								{
+									"key": "Nel",
+									"value": "{\"failure_fraction\": 0.001, \"include_subdomains\": true, \"max_age\": 600, \"report_to\": \"endpoint-1\"}"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000; preload"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"64ebbb58b70c0ee5727ffb9d\",\n    \"name\": \"USUARIOS\",\n    \"closed\": false,\n    \"idBoard\": \"64495f377e4960350195743f\",\n    \"pos\": 32768,\n    \"status\": null,\n    \"limits\": {}\n}"
+						}
+					]
+				},
+				{
+					"name": "Crear nueva tarjeta",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.collectionVariables.set(\"nameTarjeta\",pm.variables.replaceIn('{{$randomFullName}}'))"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//Validar tarjeta en la lista correcta\r",
+									"pm.test(`Tarjeta creada en la lista = ${pm.collectionVariables.get(\"nameLista\")}`, ()=> {pm.expect(pm.response.json().idList).to.be.eql(pm.collectionVariables.get(\"idLista\"))\r",
+									"})\r",
+									"// Validar tarjeta creada con el nombre correcto\r",
+									"pm.test(`Tarjeta creada con el nombre = ${pm.collectionVariables.get(\"nameTarjeta\")}`, ()=> {pm.expect(pm.response.json().name).to.be.eql(pm.collectionVariables.get(\"nameTarjeta\"))\r",
+									"})\r",
+									"//Crear o actualizar la variable idTarjeta\r",
+									"pm.collectionVariables.set(\"idTarjeta\", pm.response.json().id)\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/cards?key={{Key}}&token={{token}}&idList={{idLista}}&name={{nameTarjeta}}",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"cards"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{Key}}"
+								},
+								{
+									"key": "token",
+									"value": "{{token}}"
+								},
+								{
+									"key": "idList",
+									"value": "{{idLista}}"
+								},
+								{
+									"key": "name",
+									"value": "{{nameTarjeta}}"
+								},
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Tarjeta Kirk Olson",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "https://api.trello.com/1/cards?key=•••••••&token=•••••••&idList=&name=",
+									"protocol": "https",
+									"host": [
+										"api",
+										"trello",
+										"com"
+									],
+									"path": [
+										"1",
+										"cards"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "•••••••"
+										},
+										{
+											"key": "token",
+											"value": "•••••••"
+										},
+										{
+											"key": "idList",
+											"value": ""
+										},
+										{
+											"key": "name",
+											"value": ""
+										},
+										{
+											"key": "",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 27 Aug 2023 21:50:07 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1123"
+								},
+								{
+									"key": "X-Dns-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "Expect-Ct",
+									"value": "max-age=0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "Surrogate-Control",
+									"value": "no-store"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "max-age=0, must-revalidate, no-cache, no-store"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "Thu, 01 Jan 1970 00:00:00"
+								},
+								{
+									"key": "X-Trello-Version",
+									"value": "1.229814.0"
+								},
+								{
+									"key": "X-Trello-Environment",
+									"value": "Production"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, PUT, POST, DELETE"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Authorization, Accept, Content-Type"
+								},
+								{
+									"key": "Access-Control-Expose-Headers",
+									"value": "x-rate-limit-api-key-interval-ms, x-rate-limit-api-key-max, x-rate-limit-api-key-remaining, x-rate-limit-api-token-interval-ms, x-rate-limit-api-token-max, x-rate-limit-api-token-remaining"
+								},
+								{
+									"key": "X-Rate-Limit-Api-Token-Interval-Ms",
+									"value": "10000"
+								},
+								{
+									"key": "X-Rate-Limit-Api-Token-Max",
+									"value": "100"
+								},
+								{
+									"key": "X-Rate-Limit-Api-Token-Remaining",
+									"value": "99"
+								},
+								{
+									"key": "X-Rate-Limit-Db-Query-Time-Interval-Ms",
+									"value": "600000"
+								},
+								{
+									"key": "X-Rate-Limit-Db-Query-Time-Max",
+									"value": "7200000"
+								},
+								{
+									"key": "X-Rate-Limit-Db-Query-Time-Remaining",
+									"value": "7199990"
+								},
+								{
+									"key": "X-Rate-Limit-Api-Key-Interval-Ms",
+									"value": "10000"
+								},
+								{
+									"key": "X-Rate-Limit-Api-Key-Max",
+									"value": "300"
+								},
+								{
+									"key": "X-Rate-Limit-Api-Key-Remaining",
+									"value": "299"
+								},
+								{
+									"key": "X-Rate-Limit-Member-Interval-Ms",
+									"value": "10000"
+								},
+								{
+									"key": "X-Rate-Limit-Member-Max",
+									"value": "375"
+								},
+								{
+									"key": "X-Rate-Limit-Member-Remaining",
+									"value": "374"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "preAuthProps=s%3A5d782f54e7fbba088cc6ac03%3AisEnterpriseAdmin%3Dfalse.TdGPIj60ccTTmB2NHwarV29dxYOP87Did7lG%2FTQ%2FN%2BM; Path=/; HttpOnly"
+								},
+								{
+									"key": "X-Server-Time",
+									"value": "1693173007836"
+								},
+								{
+									"key": "Server",
+									"value": "AtlassianEdge"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Xss-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Atl-Traceid",
+									"value": "90b23dcf8332093c"
+								},
+								{
+									"key": "Report-To",
+									"value": "{\"endpoints\": [{\"url\": \"https://dz8aopenkvv6s.cloudfront.net\"}], \"group\": \"endpoint-1\", \"include_subdomains\": true, \"max_age\": 600}"
+								},
+								{
+									"key": "Nel",
+									"value": "{\"failure_fraction\": 0.001, \"include_subdomains\": true, \"max_age\": 600, \"report_to\": \"endpoint-1\"}"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000; preload"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"64ebc50fcdeead45d54e95d3\",\n    \"badges\": {\n        \"attachmentsByType\": {\n            \"trello\": {\n                \"board\": 0,\n                \"card\": 0\n            }\n        },\n        \"location\": false,\n        \"votes\": 0,\n        \"viewingMemberVoted\": false,\n        \"subscribed\": false,\n        \"fogbugz\": \"\",\n        \"checkItems\": 0,\n        \"checkItemsChecked\": 0,\n        \"checkItemsEarliestDue\": null,\n        \"comments\": 0,\n        \"attachments\": 0,\n        \"description\": false,\n        \"due\": null,\n        \"dueComplete\": false,\n        \"start\": null\n    },\n    \"checkItemStates\": [],\n    \"closed\": false,\n    \"dueComplete\": false,\n    \"dateLastActivity\": \"2023-08-27T21:50:07.756Z\",\n    \"desc\": \"\",\n    \"descData\": {\n        \"emoji\": {}\n    },\n    \"due\": null,\n    \"dueReminder\": null,\n    \"email\": null,\n    \"idBoard\": \"64495f377e4960350195743f\",\n    \"idChecklists\": [],\n    \"idList\": \"64ebbb58b70c0ee5727ffb9d\",\n    \"idMembers\": [],\n    \"idMembersVoted\": [],\n    \"idShort\": 30,\n    \"idAttachmentCover\": null,\n    \"labels\": [],\n    \"idLabels\": [],\n    \"manualCoverAttachment\": false,\n    \"name\": \"Kirk Olson\",\n    \"pos\": 32768,\n    \"shortLink\": \"DlvgtaC5\",\n    \"shortUrl\": \"https://trello.com/c/DlvgtaC5\",\n    \"start\": null,\n    \"subscribed\": false,\n    \"url\": \"https://trello.com/c/DlvgtaC5/30-kirk-olson\",\n    \"cover\": {\n        \"idAttachment\": null,\n        \"color\": null,\n        \"idUploadedBackground\": null,\n        \"size\": \"normal\",\n        \"brightness\": \"dark\",\n        \"idPlugin\": null\n    },\n    \"isTemplate\": false,\n    \"cardRole\": null,\n    \"attachments\": [],\n    \"stickers\": [],\n    \"limits\": {}\n}"
+						}
+					]
+				},
+				{
+					"name": "Crear nuevo Checklist",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//Crear o actualizar la variable idChecklist\r",
+									"pm.collectionVariables.set(\"idChecklist\",pm.response.json().id)\r",
+									"\r",
+									"//Validar que la respuesta sea un objeto\r",
+									"let res = pm.response.json()\r",
+									"pm.test(\"Response is an object\", ()=> {\r",
+									"pm.expect(res).to.be.an(\"object\")\r",
+									"})\r",
+									"\r",
+									"//Validar Checklist creado con el nombre correcto\r",
+									"pm.test(`Checklist creado con el nombre = ${pm.collectionVariables.get(\"nameChecklist\")}`, ()=> {pm.expect(pm.response.json().name).to.be.eql(pm.collectionVariables.get(\"nameChecklist\"))\r",
+									"})\r",
+									"\r",
+									"//Validar Checklist creado en la tarjeta correcta\r",
+									"pm.test(`Checklist creado en la tarjeta = ${pm.collectionVariables.get(\"nameTarjeta\")}`, ()=> {pm.expect(pm.response.json().idCard).to.be.eql(pm.collectionVariables.get(\"idTarjeta\"))\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/cards/:id/checklists?key={{Key}}&token={{token}}&name={{nameChecklist}}",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"cards",
+								":id",
+								"checklists"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{Key}}"
+								},
+								{
+									"key": "token",
+									"value": "{{token}}"
+								},
+								{
+									"key": "name",
+									"value": "{{nameChecklist}}"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{idTarjeta}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear nuevo Checkitem",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//Obtener collection variables\r",
+									"let Checkitem = pm.iterationData.get(\"nameCheckitem\")\r",
+									"let nameChecklist=pm.collectionVariables.get(\"nameChecklist\")\r",
+									"let idChecklist=pm.collectionVariables.get(\"idChecklist\")\r",
+									"\r",
+									"//Validar checkitem creado con el nombre correcto\r",
+									"if (Checkitem=\"undefined\") {\r",
+									"        pm.test(`Checkitem creado con el nombre ${pm.collectionVariables.get(\"nameCheckitem\")}`,()=> {\r",
+									"        pm.expect(pm.response.json().name).to.be.eql(pm.collectionVariables.get(\"nameCheckitem\"))\r",
+									"        })\r",
+									"    } else {\r",
+									"        pm.test(`Checkitem creado con el nombre ${Checkitem}`,()=> {\r",
+									"        pm.expect(pm.response.json().name).to.be.eql(Checkitem)\r",
+									"    })\r",
+									"}\r",
+									"\r",
+									"//Validar checkitem creado en el checklist correcto \r",
+									"pm.test(`Checkitem ${Checkitem} creado en Checklist ${nameChecklist}`,()=> {\r",
+									"    pm.expect(pm.response.json().idChecklist).to.be.eql(idChecklist)\r",
+									"})\r",
+									"\r",
+									"//Crear o actualizar la variable idCheckitem\r",
+									"pm.collectionVariables.set(\"idCheckItem\",pm.response.json().id)\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/checklists/:id/checkItems?key={{Key}}&token={{token}}&name={{nameCheckitem}}&pos=top",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"checklists",
+								":id",
+								"checkItems"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{Key}}"
+								},
+								{
+									"key": "token",
+									"value": "{{token}}"
+								},
+								{
+									"key": "name",
+									"value": "{{nameCheckitem}}"
+								},
+								{
+									"key": "pos",
+									"value": "top"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{idChecklist}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modificar state en CheckItem",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/cards/:id/checkItem/:idCheckItem?key={{Key}}&token={{token}}&state=complete",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"cards",
+								":id",
+								"checkItem",
+								":idCheckItem"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{Key}}"
+								},
+								{
+									"key": "token",
+									"value": "{{token}}"
+								},
+								{
+									"key": "state",
+									"value": "complete"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{idTarjeta}}"
+								},
+								{
+									"key": "idCheckItem",
+									"value": "{{idCheckItem}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Validar state de CheckItem",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//Validar checkitem con state \"complete\"\r",
+									"let item=pm.response.json().find(i=>i.state===\"complete\")\r",
+									"console.log(item)\r",
+									"\r",
+									"pm.test(\"CheckList contiene CheckItem con state = complete\",()=> {\r",
+									"    pm.expect(item).to.include({\"state\":\"complete\"})\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/checklists/:id/checkItems?key={{Key}}&token={{token}}",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"checklists",
+								":id",
+								"checkItems"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{Key}}"
+								},
+								{
+									"key": "token",
+									"value": "{{token}}"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{idChecklist}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Visualizar Checkitems",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//Set visualizer\r",
+									"var template = `\r",
+									"<!--bootstrap-->\r",
+									"<head>\r",
+									"<link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css\" rel=\"stylesheet\" integrity=\"sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9\" crossorigin=\"anonymous\">\r",
+									"</head>\r",
+									"\r",
+									"<!--content-->\r",
+									"<body>\r",
+									"\r",
+									"<div class=\"container text-start\">\r",
+									"    <div>\r",
+									"        <div class=\"col\">\r",
+									"        <img src=\"https://img.freepik.com/vector-gratis/ilustracion-concepto-lista-verificacion_114360-479.jpg?w=740&t=st=1693220836~exp=1693221436~hmac=9fcb399681064bccae281cc83130b657fd035a81f54922641845352fdc690a0f\" class=\"rounded float-start\" style=\"width: 100px\">\r",
+									"        </div>\r",
+									"    <div class=\"col\">\r",
+									"        <h2> Lista ${pm.collectionVariables.get(\"nameLista\")} </h2>\r",
+									"        <h3> Tarjeta ${pm.collectionVariables.get(\"nameTarjeta\")} </h3>\r",
+									"        <h3> Checklist ${pm.collectionVariables.get(\"nameChecklist\")} </h3>\r",
+									"    </div>\r",
+									"</div>\r",
+									"\r",
+									"<div style=\"width: 400px\">\r",
+									"    <table class=\"table\">\r",
+									"        <thead>\r",
+									"            <tr>\r",
+									"                <th scope=\"col\">Name</th>\r",
+									"                <th scope=\"col\">State</th>\r",
+									"            </tr>\r",
+									"        </thead>\r",
+									"        <tbody class=\"table-group-divider\">\r",
+									"            {{#each response}}\r",
+									"                    <tr>\r",
+									"                        <th scope=\"row\">{{name}}</th>\r",
+									"                        <td>{{state}}</td>\r",
+									"                    </tr>\r",
+									"            {{/each}}\r",
+									"        </tbody>\r",
+									"    </table>\r",
+									"</div>\r",
+									"<script src=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js\" integrity=\"sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm\" crossorigin=\"anonymous\"></script>\r",
+									"</body>\r",
+									"`;\r",
+									"// Representar visualmente las respuestas de las solicitudes\r",
+									"pm.visualizer.set(template, {\r",
+									"response: pm.response.json()\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/checklists/:id/checkItems?key={{Key}}&token={{token}}",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"checklists",
+								":id",
+								"checkItems"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{Key}}"
+								},
+								{
+									"key": "token",
+									"value": "{{token}}"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{idChecklist}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar tarjeta",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/cards/:id?key={{Key}}&token={{token}}",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"cards",
+								":id"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{Key}}"
+								},
+								{
+									"key": "token",
+									"value": "{{token}}"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{idTarjeta}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Archivar lista",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//Orden de ejecucion\r",
+									"postman.setNextRequest (\"Validar lista archivada\")"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/lists/:id/closed?key={{Key}}&token={{token}}&value=true",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"lists",
+								":id",
+								"closed"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{Key}}"
+								},
+								{
+									"key": "token",
+									"value": "{{token}}"
+								},
+								{
+									"key": "value",
+									"value": "true"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{idLista}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Validar lista archivada",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Validar lista archivada\r",
+									"let totalPass=1\r",
+									"let pass=0\r",
+									"\r",
+									"pm.test(\"Lista archivada\", function () {\r",
+									"    pm.expect(pm.response.json().closed).to.be.eql(true)\r",
+									"    pass++\r",
+									"});\r",
+									"\r",
+									"// Visualizar resultado final del test\r",
+									"if (totalPass=pass) {\r",
+									"    pm.visualizer.set(\r",
+									"     `Passing!\r",
+									"        <br />\r",
+									"        <img src=\"https://cdn-icons-png.flaticon.com/128/2274/2274543.png\" />\r",
+									"    `)} else {\r",
+									"    pm.visualizer.set (`Please try again!\r",
+									"        <br />\r",
+									"        <img src=\"https://cdn-icons-png.flaticon.com/128/1791/1791330.png\" />\r",
+									"    `)\r",
+									"    }\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/lists/:id?key={{Key}}&token={{token}}",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"lists",
+								":id"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{Key}}"
+								},
+								{
+									"key": "token",
+									"value": "{{token}}"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{idLista}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"// Validar codigo de estado 200",
+							"pm.test(\"Resultado 200\",()=> {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						]
+					}
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "nameLista",
+			"value": ""
+		},
+		{
+			"key": "idLista",
+			"value": ""
+		},
+		{
+			"key": "nameTarjeta",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "idTarjeta",
+			"value": ""
+		},
+		{
+			"key": "nameChecklist",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "idChecklist",
+			"value": ""
+		},
+		{
+			"key": "idCheckItem",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "nameCheckitem",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
