@@ -156,4 +156,4 @@ Variables de ambiente:
 
 ### 📊 Reportes: 
 Se realiza la ejecucion y prueba de la coleccion desde la linea de comando con Newman.
-Reporte HTML: <a href=""> Newman Run Dashboard </a>
+Reporte HTML: <a href="file:///C:/Users/Marcos/Desktop/1709/newman/Newman%20Run%20Dashboard.html"> Newman Run Dashboard </a>
