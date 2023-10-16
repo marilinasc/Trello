@@ -156,4 +156,6 @@ Variables de ambiente:
 ### 📊 Reportes: 
 Se realiza la ejecucion y prueba de la coleccion desde la linea de comando con Newman.
 
-Reporte HTML - Newman Run Dashboard: file:///C:/Users/Marcos/Desktop/1709/newman/Newman%20Run%20Dashboard.html
+<a href="https://github.com/marilinasc/Trello/tree/main/Report"> Reporte HTML - Newman Run Dashboard </a>
+
+<img src="/dashboard.PNG"/> 
